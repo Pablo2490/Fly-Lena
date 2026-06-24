@@ -1,0 +1,277 @@
+/* #region Reset y Base */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+ 
+html {
+
+    font-size: 62.5%;
+}
+ 
+body {
+    background-color: #FFFFFF;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.6rem;
+    color: #0F172A;
+    overflow-x: hidden;
+}
+/* #endregion */
+  
+/* #region Contenido principal */
+
+.container {
+    max-width: 85rem;
+    width: 100%;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    flex: 1;         
+}
+ 
+.container > h2 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+}
+/* #endregion */
+ 
+/* #region Acordeones */
+.acordion {
+    margin-bottom: 2rem;
+}
+ 
+/* Header del acordeón */
+.acordion-header {
+    background-color: #FFFFFF;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.8rem;
+    padding: 2rem 2.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.8rem;
+    list-style: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+ 
+.acordion-header:hover {
+    border-color: #0c1735;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+ 
+.acordion-header.active {
+    border: 1.5px solid #0c1735;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 0.8rem 0.8rem 0 0;
+}
+ 
+.nombre-ruta {
+    flex: 1;
+}
+ 
+.precio-y-flecha {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+ 
+/* Flecha del acordeón */
+.flecha-acordion {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+ 
+.acordion-header.active .flecha-acordion {
+    transform: rotate(180deg);
+}
+ 
+/* Contenido del acordeón */
+.acordion-content {
+    max-height: 0;
+    overflow: hidden;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-top: none;
+    border-radius: 0 0 0.8rem 0.8rem;
+    transition: max-height 0.4s ease;
+}
+ 
+.acordion-content.active {
+    max-height: 200rem;
+    border-color: #0c1735;
+    border-top: none;
+}
+ 
+/* Detalle del vuelo dentro del acordeón */
+.detalle-vuelo {
+    padding: 2.5rem;
+    border-top: 1px solid #f1f5f9;
+}
+ 
+.vuelo {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+ 
+.vuelo:last-child {
+    margin-bottom: 0;
+    padding-top: 1.5rem;
+    border-top: 1px dashed #cbd5e1;
+}
+ 
+.vuelo h3 {
+    font-size: 1.6rem;
+    color: #64748b;
+    width: 6rem;
+    font-weight: 600;
+}
+ 
+.vuelo h4 {
+    font-size: 1.6rem;
+    flex: 1;
+    min-width: 20rem;
+    font-weight: 500;
+}
+ 
+.tiempo-vuelo {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+ 
+.duracion-vuelo {
+    font-size: 1.4rem;
+    color: #64748b;
+}
+ 
+.info-vuelo {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #1E5BFF;
+    margin-left: auto;
+}
+ 
+/* Badges: aerolínea / clase / pasajeros */
+.info-badge {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.6rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid #e2e8f0;
+}
+ 
+.info-badge span {
+    background-color: #e0f2fe;
+    color: #0369a1;
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 0.4rem 1rem;
+    border-radius: 9999px;
+}
+ 
+/* Mensaje cuando no hay reservas */
+.sin-reservas {
+    font-size: 1.6rem;
+    color: #64748b;
+    padding: 3rem 0;
+    text-align: center;
+}
+/* #endregion */
+ 
+ 
+/* #region Responsive */
+@media (max-width: 768px) {
+    html {
+        font-size: 56.25%;
+    }
+}
+ 
+@media (max-width: 580px) {
+    .vuelo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+ 
+    .vuelo h3,
+    .vuelo h4 {
+        width: 100%;
+        min-width: 0;
+    }
+ 
+    .info-vuelo {
+        margin-left: 0;
+        background-color: #e0f2fe;
+        padding: 0.4rem 0.8rem;
+        border-radius: 0.4rem;
+    }
+}
+ 
+@media (max-width: 480px) {
+    html {
+        font-size: 50%;
+    }
+ 
+    .acordion-header {
+        padding: 1.5rem;
+        font-size: 1.6rem;
+    }
+ 
+    .detalle-vuelo {
+        padding: 1.5rem;
+    }
+}
+/* #endregion */
+
+@media (max-width: 768px) {
+    html {
+        font-size: 56.25%;
+    }
+}
+ 
+@media (max-width: 580px) {
+    .vuelo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+ 
+    .vuelo h3,
+    .vuelo h4 {
+        width: 100%;
+        min-width: 0;
+    }
+ 
+    .info-vuelo {
+        margin-left: 0;
+        background-color: #e0f2fe;
+        padding: 0.4rem 0.8rem;
+        border-radius: 0.4rem;
+    }
+}
+ 
+@media (max-width: 480px) {
+    html {
+        font-size: 50%;
+    }
+ 
+    .acordion-header {
+        padding: 1.5rem;
+        font-size: 1.6rem;
+    }
+ 
+    .detalle-vuelo {
+        padding: 1.5rem;
+    }
+}
+/* #endregion */

@@ -1,0 +1,649 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+ 
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+ 
+body {
+    background-color: #f6f8fb;
+    color: #0c1735;
+}
+ 
+/* #region Main */
+main {
+    min-height: calc(100vh - 8rem);
+}
+ 
+.seccionInfoBusqueda {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 13rem;
+    padding: 0 4rem;
+    background-color: #19264d;
+}
+ 
+.contenedorInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+}
+ 
+.contenedorInfo div {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+ 
+.contenedorInfo div hr {
+    border: none;
+    background-color: #FFFFFF;
+    width: 0.3rem;
+    height: 2rem;
+}
+ 
+.contenedorInfoParte1 p,
+.contenedorInfoParte1 i {
+    font-size: 3.5rem;
+    color: #FFFFFF;
+}
+ 
+.contenedorInfoParte2 p {
+    font-size: 2rem;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+ 
+.contenedorModificarBusqueda {
+    padding: 2rem;
+    background-color: #FFFFFF;
+    border-radius: 1rem;
+}
+ 
+.contenedorModificarBusqueda a {
+    color: #1266d6;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 2rem;
+}
+ 
+.seccionResultados {
+    display: grid;
+    grid-template-columns: 28rem 1fr 28rem;
+    gap: 3rem;
+    width: 100%;
+    padding: 4rem;
+    background-color: #f6f8fb;
+    height: auto;
+}
+ 
+/* Filtros */
+.filtros {
+    background-color: white;
+    border: 0.2rem solid #d9e1ec;
+    border-radius: 1.6rem;
+    padding: 2.5rem;
+}
+ 
+.filtros h3 {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    color: #0c1735;
+}
+ 
+.grupoFiltro {
+    border-top: 0.1rem solid #d9e1ec;
+    padding: 2rem 0;
+}
+ 
+.grupoFiltro summary {
+    list-style: none;
+    cursor: pointer;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #0c1735;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ 
+.grupoFiltro summary::-webkit-details-marker {
+    display: none;
+}
+ 
+.grupoFiltro summary::after {
+    content: "⌄";
+    font-size: 2rem;
+    color: #1266d6;
+    transition: 0.3s;
+}
+ 
+.grupoFiltro[open] summary::after {
+    transform: rotate(180deg);
+}
+ 
+.grupoFiltro label {
+    display: block;
+    font-size: 1.8rem;
+    color: #44516c;
+    margin-top: 1.4rem;
+}
+ 
+.grupoFiltro label input[type="checkbox"] {
+    accent-color: #006ee6;
+    cursor: pointer;
+}
+ 
+.valoresRango {
+    display: flex;
+    justify-content: space-between;
+    margin: 1.6rem 0 1rem;
+    font-size: 1.7rem;
+    color: #44516c;
+}
+ 
+.grupoFiltro input[type="range"] {
+    width: 100%;
+    accent-color: #006ee6;
+    cursor: pointer;
+}
+ 
+.sinResultados {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid #dbe3ee;
+}
+ 
+.sinResultados h3 {
+    color: #0c1735;
+    margin-bottom: 0.5rem;
+    font-size: 1.7rem;
+}
+ 
+.sinResultados p {
+    color: #666;
+    font-size: 1.3rem;
+}
+ 
+/* Resultados */
+.resultadosVuelos {
+    width: 100%;
+    padding: 0;
+}
+ 
+.encabezadoResultados {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+ 
+.encabezadoResultados h2 {
+    font-size: 2.5rem;
+    color: #0c1735;
+}
+ 
+.dropdown {
+    position: relative;
+}
+ 
+#toggleDropdown {
+    display: none;
+}
+ 
+.botonOrdenar {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.3rem 1.8rem;
+    border: 0.2rem solid #d9e1ec;
+    background-color: white;
+    border-radius: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+ 
+.dropdownMenu {
+    position: absolute;
+    top: 110%;
+    right: 0;
+    z-index: 10;
+    background-color: #FFFFFF;
+    border: 0.2rem solid #d9e1ec;
+    border-radius: 1rem;
+    list-style: none;
+    width: 26rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.2s;
+    overflow: hidden;
+}
+ 
+#toggleDropdown:checked~.dropdownMenu {
+    opacity: 1;
+    visibility: visible;
+}
+ 
+.dropdownMenu li {
+    padding: 1.3rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+ 
+.dropdownMenu li:hover {
+    background-color: #f0f4fa;
+}
+ 
+.cardVuelo {
+    display: grid;
+    grid-template-columns: 1.3fr 0.8fr 1.8fr 0.8fr 0.8fr 1.1fr;
+    align-items: center;
+    gap: 2rem;
+    background-color: white;
+    border: 0.2rem solid #d9e1ec;
+    border-radius: 2rem;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 0.8rem 2rem rgba(12, 23, 53, 0.06);
+}
+ 
+.aerolinea img {
+    width: 11rem;
+    height: auto;
+}
+ 
+.horario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+ 
+.horario strong {
+    font-size: 2.2rem;
+    color: #0c1735;
+}
+ 
+.horario span,
+.duracion {
+    font-size: 2.1rem;
+    color: #44516c;
+}
+ 
+.trayecto {
+    text-align: center;
+    color: #44516c;
+    font-size: 1.3rem;
+}
+ 
+.lineaTrayecto {
+    position: relative;
+    height: 2rem;
+    margin: 0.5rem 0;
+}
+ 
+.lineaTrayecto::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 0.2rem;
+    background-color: #aeb8c6;
+}
+ 
+.lineaTrayecto i {
+    position: relative;
+    z-index: 1;
+    background-color: white;
+    color: #006ee6;
+    padding: 0 0.8rem;
+}
+ 
+.trayecto small {
+    font-size: 1.4rem;
+    color: #44516c;
+}
+ 
+.precio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+ 
+.precio strong {
+    font-size: 2.8rem;
+    color: #0c1735;
+}
+ 
+.precio span {
+    font-size: 2rem;
+    color: #44516c;
+}
+ 
+.precio a {
+    background-color: #006ee6;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 0.6rem;
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+ 
+.precio a:hover {
+    background-color: #0054b5;
+}
+ 
+/* Panel derecho: equipaje y políticas */
+.panelResumen {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+ 
+.boxResumen {
+    background-color: #FFFFFF;
+    border: 0.2rem solid #d9e1ec;
+    border-radius: 1.6rem;
+    padding: 2rem;
+    height: fit-content;
+    box-shadow: 0 0.8rem 2rem rgba(12, 23, 53, 0.06);
+}
+ 
+.boxResumen h3 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 2rem;
+    color: #0c1735;
+    margin-bottom: 1.6rem;
+}
+ 
+.boxResumen h3 i {
+    color: #006ee6;
+}
+ 
+.boxResumen label {
+    display: block;
+    font-size: 1.6rem;
+    color: #44516c;
+    margin-bottom: 1.2rem;
+}
+ 
+.boxResumen input {
+    accent-color: #006ee6;
+}
+ 
+.boxResumen p {
+    font-size: 1.4rem;
+    color: #6b7485;
+    line-height: 1.5;
+    margin-top: 1.5rem;
+}
+ 
+.boxResumen ul {
+    padding-left: 2rem;
+}
+ 
+.boxResumen li {
+    font-size: 1.5rem;
+    color: #44516c;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+ 
+/* Sin Sesion */
+.sinSesion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+ 
+.cardSinSesion {
+    background: white;
+    padding: 4rem;
+    border-radius: 1.6rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .08);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+}
+ 
+.cardSinSesion i {
+    font-size: 5rem;
+    color: #0D1B4C;
+    margin-bottom: 2rem;
+}
+ 
+.cardSinSesion h2 {
+    color: #0D1B4C;
+    margin-bottom: 1rem;
+    font-size: 3rem;
+}
+ 
+.cardSinSesion p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    font-size: 1.5rem;
+}
+ 
+.accionesSesion {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+ 
+.btnSesion,
+.btnRegistro {
+    text-decoration: none;
+    padding: 1.2rem 2.4rem;
+    border-radius: 1rem;
+    font-weight: 600;
+    transition: .3s;
+    font-size: 1.5rem;
+}
+ 
+.btnSesion {
+    background: #0D1B4C;
+    color: white;
+}
+ 
+.btnRegistro {
+    background: #1677FF;
+    color: white;
+}
+ 
+.btnSesion:hover,
+.btnRegistro:hover {
+    transform: translateY(-2px);
+}
+ 
+/* #endregion Main */
+ 
+ 
+/* RESPONSIVE TABLET — sigue el mismo breakpoint que componentes-globales (1280px se mantiene aparte para el nav) */
+ 
+@media (max-width: 1024px) {
+ 
+    .seccionInfoBusqueda {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 3rem 2rem;
+        align-items: flex-start;
+    }
+ 
+    .seccionResultados {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+    }
+ 
+    .panelResumen {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+ 
+    .boxResumen {
+        flex: 1 1 30rem;
+    }
+ 
+    .cardVuelo {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        padding: 3rem;
+    }
+ 
+    .trayecto {
+        grid-column: span 2;
+    }
+ 
+    .precio {
+        grid-column: span 2;
+    }
+}
+ 
+ 
+/* RESPONSIVE MOBILE */
+ 
+@media (max-width: 768px) {
+ 
+    html {
+        font-size: 55%;
+    }
+ 
+    /* INFO BUSQUEDA */
+ 
+    .seccionInfoBusqueda {
+        padding: 2rem;
+    }
+ 
+    .contenedorInfoParte1 p,
+    .contenedorInfoParte1 i {
+        font-size: 2.5rem;
+    }
+ 
+    .contenedorInfoParte2 p {
+        font-size: 1.6rem;
+    }
+ 
+    .contenedorInfo {
+        width: 100%;
+    }
+ 
+    .contenedorInfo div {
+        flex-wrap: wrap;
+        row-gap: 1rem;
+    }
+ 
+    .contenedorInfoParte2 {
+        width: 100%;
+    }
+ 
+    .contenedorModificarBusqueda {
+        width: 100%;
+        text-align: center;
+    }
+ 
+    /* RESULTADOS */
+ 
+    .seccionResultados {
+        padding: 1.5rem;
+        gap: 2rem;
+    }
+ 
+    .encabezadoResultados {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+ 
+    .encabezadoResultados h2 {
+        font-size: 2rem;
+    }
+ 
+    /* CARD VUELOS */
+ 
+    .cardVuelo {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 2rem;
+    }
+ 
+    .aerolinea,
+    .horario,
+    .trayecto,
+    .precio {
+        width: 100%;
+    }
+ 
+    .aerolinea img {
+        width: 9rem;
+    }
+ 
+    .horario strong {
+        font-size: 2rem;
+    }
+ 
+    .horario span,
+    .duracion {
+        font-size: 1.7rem;
+    }
+ 
+    .trayecto small {
+        font-size: 1.3rem;
+    }
+ 
+    .precio strong {
+        font-size: 2.4rem;
+    }
+ 
+    .precio span {
+        font-size: 1.6rem;
+    }
+ 
+    .precio a {
+        width: 100%;
+        text-align: center;
+    }
+ 
+    /* FILTROS */
+ 
+    .filtros {
+        padding: 2rem;
+    }
+ 
+    .filtros h3 {
+        font-size: 2.2rem;
+    }
+ 
+    .grupoFiltro summary {
+        font-size: 1.8rem;
+    }
+ 
+    .grupoFiltro label {
+        font-size: 1.5rem;
+    }
+ 
+    /* PANEL DERECHO */
+ 
+    .panelResumen {
+        flex-direction: column;
+    }
+ 
+    .boxResumen {
+        width: 100%;
+    }
+}

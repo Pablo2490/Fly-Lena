@@ -1,0 +1,288 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+ 
+html { font-size: 62.5%; }
+h1 { font-size: 4rem; font-weight: 700; color: #0F172A; margin-bottom: 2rem; }
+h2 { font-size: 2.8rem; font-weight: 700; }
+h3 { font-size: 2rem; font-weight: 600; }
+p  { font-size: 1.6rem; color: #64748B; }
+ 
+/* ── Layout principal ─────────────────────────────────────── */
+main {
+    max-width: 1400px;   
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+ 
+main > a {
+    display: inline-block;
+    font-size: 1.4rem;
+    color: #2563EB;
+    text-decoration: none;
+    margin-bottom: 1rem;
+}
+ 
+.contenedor {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+}
+ 
+.panel-izquierdo {
+    flex: 1 1 38rem;
+    min-width: 30rem;
+}
+
+.panel-derecho {
+    flex: 2 1 60rem;
+    background-color: #FFFFFF;
+    padding: 2.5rem;
+    border-radius: 1.2rem;
+    border: 1px solid #E2E8F0;
+}
+
+.panel-izquierdo section,
+.panel-izquierdo aside {
+    background-color: #FFFFFF;
+    padding: 2rem;
+    border-radius: 1.2rem;
+    margin-bottom: 2rem;
+    border: 1px solid #E2E8F0;
+}
+
+.swal2-popup { font-size: 1.6rem !important; }
+.swal2-title { font-size: 2rem !important; }
+ 
+/* ── Línea de tiempo del vuelo ────────────────────────────── */
+.linea-tiempo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+ 
+.origen,
+.destino {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+ 
+.hora   { font-size: 2rem; font-weight: 700; color: #0F172A; }
+.codigo { font-size: 1.4rem; font-weight: 600; color: #0F172A; }
+.ciudad { font-size: 1.2rem; color: #64748B; }
+ 
+.aerolinea {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+.aerolinea img { height: 2.5rem; width: auto; }
+ 
+.conexion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    max-width: 18rem;
+    font-size: 1.4rem;
+    gap: 0.3rem;
+}
+.linea { width: 100%; height: 1px; background-color: #64748B; }
+ 
+/* ── Resumen de precio ────────────────────────────────────── */
+.precio-card .fila-precio {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+}
+ 
+.precio-card .total {
+    border-top: 1px solid #E2E8F0;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1E3A8A;
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-titulo {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+    color: #2563EB;
+}
+
+.mapas-wrapper {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;         
+}
+
+.columna-mapa {
+    flex: 1 1 26rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+ 
+.columna-mapa .titulo-asiento {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #0F172A;
+    text-align: center;
+    margin-bottom: 0.4rem;
+}
+ 
+.columna-mapa .subtitulo-tramo {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2563EB;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.mapa-asientos {
+    padding: 1.5rem 1rem;
+    background-color: #F1F5F9;
+    border-radius: 4rem 4rem 1rem 1rem;
+    width: 100%;
+}
+ 
+.cabecera-columnas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.6rem;
+}
+.cabecera-columnas span {
+    width: 3rem;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #64748B;
+}
+.pasillo { width: 2.5rem; }
+ 
+.fila {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+ 
+.numero-fila {
+    width: 2rem;
+    text-align: center;
+    font-size: 1.3rem;
+    color: #64748B;
+}
+ 
+.frente-avion,
+.trasera-avion {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #64748B;
+    padding: 0.8rem;
+    background-color: #E2E8F0;
+    border-radius: 0.6rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.asiento {
+    width: 3rem;
+    height: 3.5rem;
+    background-color: #FFFFFF;
+    border: 2px solid #3B82F6;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.asiento:hover             { background-color: #BFDBFE; }
+.asiento.ocupado           { background-color: #E2E8F0; border-color: #CBD5E1; cursor: not-allowed; }
+.asiento.seleccionado      { background-color: #2563EB; border-color: #1D4ED8; }
+ 
+.leyenda {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+.leyenda-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.3rem;
+}
+.cuadrado-disponible,
+.cuadrado-ocupado,
+.cuadrado-seleccionado {
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 0.3rem;
+    display: inline-block;
+}
+.cuadrado-disponible  { background-color: #FFFFFF; border: 2px solid #3B82F6; }
+.cuadrado-ocupado     { background-color: #E2E8F0; border: 2px solid #CBD5E1; }
+.cuadrado-seleccionado{ background-color: #2563EB; border: 2px solid #1D4ED8; }
+
+.botonContinuar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    padding: 1.6rem;
+    background-color: #2563EB;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 1.2rem;
+    font-size: 2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+.botonContinuar:hover    { background-color: #1D4ED8; }
+.botonContinuar:disabled {
+    background-color: #94A3B8;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+ 
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 1200px) {
+    .contenedor { flex-direction: column; }
+    .panel-izquierdo,
+    .panel-derecho { width: 100%; }
+}
+ 
+@media (max-width: 768px) {
+    h1 { font-size: 3rem; }
+    main { margin-top: 2rem; }
+    .mapas-wrapper { flex-direction: column; }
+    .columna-mapa  { width: 100%; }
+    .linea-tiempo { gap: 0.5rem; }
+    .conexion     { max-width: 10rem; font-size: 1.2rem; }
+    .asiento { width: 2.5rem; height: 3rem; }
+    .mapa-asientos { padding: 1rem 0.5rem; }
+    .panel-derecho { padding: 1.5rem 1rem; }
+}

@@ -1,0 +1,162 @@
+/* #region Config Global */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+}
+/* #endregion Config Global */
+ 
+/* #region CSS de Login */
+body {
+    background-color: #f0f4ff;
+}
+ 
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 4rem 2rem;
+}
+ 
+.section-formulario {
+    width: 100%;
+    max-width: 50rem; 
+    padding: 5rem;
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.15);
+}
+ 
+/* EXTRA: título arriba del form */
+.form-titulo {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #0c1735;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+ 
+.form-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; 
+}
+ 
+.grupo-input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    position: relative;
+}
+ 
+.grupo-input label {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #0c1735;
+}
+ 
+.grupo-input input {
+    width: 100%;
+    padding: 1.2rem;
+    border: 0.1rem solid #e5e7eb;
+    border-radius: 0.5rem;
+    background-color: #ffffff;
+    font-size: 1.6rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+ 
+.grupo-input input:focus {
+    border-color: #3B82F6;
+    box-shadow: 0 0 0 0.3rem rgba(59, 130, 246, 0.15);
+}
+
+.msg-validacion {
+    font-size: 1.2rem;
+    font-weight: 500;
+    min-height: 1.6rem;
+    display: block;
+}
+
+.btn-toggle-pass {
+    background: none;
+    border: none;
+    color: #3B82F6;
+    font-size: 1.3rem;
+    cursor: pointer;
+    text-align: left;
+    padding: 0;
+    margin-top: 0.2rem;
+    width: fit-content;
+}
+ 
+.btn-toggle-pass:hover {
+    text-decoration: underline;
+}
+ 
+.form-actions {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+ 
+.btn-ingresar,
+.btn-cancelar {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.7rem;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: none;
+}
+ 
+.btn-ingresar {
+    background-color: #1E5BFF;
+    color: #ffffff;
+}
+ 
+.btn-ingresar:hover {
+    background-color: #1749cc;
+}
+ 
+.btn-cancelar {
+    background-color: #ffffff;
+    color: #000000;
+    border: 0.2rem solid #e5e7eb;
+}
+ 
+.btn-cancelar:hover {
+    background-color: #f3f4f6;
+}
+/* #endregion CSS de Login */
+ 
+/* #region MediaQuerys */
+@media screen and (max-width: 768px) {
+    .section-formulario {
+        padding: 3rem 2rem;
+        box-shadow: none;
+    }
+ 
+    .form-actions {
+        flex-direction: column;
+    }
+ 
+    .btn-ingresar,
+    .btn-cancelar {
+        width: 100%;
+        padding: 1.8rem;
+    }
+}
+/* #endregion MediaQuerys */

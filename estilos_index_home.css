@@ -1,0 +1,460 @@
+/* #region Config Global & Fuente */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+ 
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+ 
+html, body {
+    overflow-x: hidden;
+}
+/* #endregion CSS Global & Fuente */
+
+/* #region CSS del Main */
+.seccion-hero {
+    height: 38rem;
+    background-size: cover;
+    background-position: center 42%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3.5rem 10%;
+    color: white;
+    overflow: hidden;
+}
+ 
+.seccion-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0, 35, 90, 0.55), rgba(0, 35, 90, 0.1));
+}
+ 
+.hero-contenido,
+.buscador-vuelos {
+    position: relative;
+    z-index: 1;
+}
+ 
+.hero-contenido h1 {
+    max-width: 80rem;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+    text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.5);
+}
+ 
+.hero-contenido p {
+    font-size: 2rem;
+    color: #FFFFFF;
+}
+ 
+/* Config del Buscador */
+.buscador-vuelos {
+    background-color: #FFFFFF;
+    border-radius: 1.2rem;
+    padding: 2rem 2rem 4.5rem;
+    margin-top: 3rem;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.18);
+    color: #333;
+    overflow: visible;
+}
+ 
+.tipo-viaje {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 0.1rem solid #CFCFCF;
+}
+ 
+.boton-tipo {
+    background: none;
+    border: none;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #666;
+    transition: background 0.3s;
+    border-bottom: 0.3rem solid transparent;
+}
+ 
+.boton-tipo:hover {
+    background-color: #CFCFCF;
+}
+ 
+.boton-tipo.activo {
+    color: #1E5BFF;
+    border-bottom: 0.3rem solid #1E5BFF;
+}
+ 
+.formulario-vuelos {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    padding-bottom: 0;
+}
+ 
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 15rem;
+    position: relative;
+    padding-bottom: 2rem;
+}
+ 
+.campo label {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+ 
+.campo input {
+    padding: 1rem;
+    border: 0.1rem solid #CFCFCF;
+    border-radius: 0.6rem;
+    font-size: 1.5rem;
+}
+ 
+.select-personalizado {
+    display: flex;
+    gap: 0.5rem;
+}
+ 
+.select-personalizado select {
+    padding: 1rem;
+    border: 0.1rem solid #CFCFCF;
+    border-radius: 0.6rem;
+    font-size: 1.4rem;
+    background-color: white;
+    cursor: pointer;
+    flex: 1;
+}
+ 
+.boton-buscar {
+    background-color: #1E5BFF;
+    color: white;
+    border: none;
+    padding: 1.3rem 2.5rem;
+    font-size: 1.5rem;
+    border-radius: 0.6rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    margin-bottom: 2rem;
+}
+ 
+.mensaje-validacion {
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: block;
+    position: absolute;
+    bottom: -3rem;
+    left: 0;
+    line-height: 1.3;
+    width: 100%;
+}
+ 
+.campo.invalido input {
+    border: 0.1rem solid #e74c3c !important;
+    background-color: #fdeaea !important;
+}
+ 
+.campo.invalido .mensaje-validacion {
+    color: #e74c3c;
+}
+ 
+.campo.valido input {
+    border: 0.1rem solid #2ecc71 !important;
+    background-color: #eafaf1 !important;
+}
+ 
+.campo.valido .mensaje-validacion {
+    color: #2ecc71;
+}
+ 
+input.input-valido {
+    border: 0.15rem solid #2ecc71 !important;
+    background-color: #eafaf1 !important;
+}
+ 
+input.input-invalido {
+    border: 0.15rem solid #e74c3c !important;
+    background-color: #fdeaea !important;
+}
+ 
+/* Sección de Visualización de Resultados Filtrados */
+.seccion-resultados {
+    max-width: 120rem;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+ 
+.resultados-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+ 
+.tarjeta-vuelo {
+    background: #FFFFFF;
+    border: 0.1rem solid #e2e8f0;
+    border-radius: 0.8rem;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.05);
+}
+ 
+.vuelo-info h3 {
+    font-size: 1.8rem;
+    color: #0c1735;
+    margin-bottom: 0.5rem;
+}
+ 
+.vuelo-info p {
+    font-size: 1.4rem;
+    color: #555555;
+}
+ 
+.vuelo-precio {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+}
+ 
+.vuelo-precio span {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #1E5BFF;
+}
+ 
+.no-resultados {
+    background: #f8fafc;
+    border: 0.1rem dashed #cbd5e1;
+    border-radius: 0.8rem;
+    padding: 4rem;
+    text-align: center;
+    font-size: 1.6rem;
+    color: #64748b;
+}
+ 
+/* Config de Ofertas Destacadas */
+.seccion-ofertas {
+    background-color: white;
+    padding: 2.5rem 10% 4rem;
+    max-width: 152rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+ 
+.ofertas-cabecera {
+    max-width: 120rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.1rem solid #CFCFCF;
+    padding-bottom: 1rem;
+}
+ 
+.ofertas-cabecera h2 {
+    font-size: 2rem;
+}
+ 
+.link-ver-todas {
+    color: #1E5BFF;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+ 
+.carrusel-container {
+    position: relative;
+    width: 100%;
+    max-width: 120rem;
+    margin: 2rem auto 0;
+    overflow: hidden;
+    border-radius: 1.2rem;
+    box-shadow: 0 1rem 3rem rgba(12, 23, 53, 0.18);
+}
+ 
+input[name="carrusel-control"] {
+    display: none;
+}
+ 
+.carrusel-slides {
+    display: flex;
+    width: 300%;
+    transition: transform 0.5s ease-in-out;
+}
+ 
+.slide-item {
+    width: 33.333%;
+    flex-shrink: 0;
+}
+ 
+.slide-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+ 
+#slide-1:checked~.carrusel-slides {
+    transform: translateX(0);
+}
+ 
+#slide-2:checked~.carrusel-slides {
+    transform: translateX(-33.333%);
+}
+ 
+#slide-3:checked~.carrusel-slides {
+    transform: translateX(-66.666%);
+}
+ 
+.carrusel-nav .controles {
+    display: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+ 
+#slide-1:checked~.carrusel-nav .s1,
+#slide-2:checked~.carrusel-nav .s2,
+#slide-3:checked~.carrusel-nav .s3 {
+    display: block;
+}
+ 
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.35);
+    color: white;
+    border-radius: 50%;
+    font-size: 2rem;
+    font-weight: bold;
+    transition: 0.3s ease;
+    user-select: none;
+    z-index: 5;
+}
+ 
+.prev {
+    left: 1.5rem;
+}
+ 
+.next {
+    right: 1.5rem;
+}
+ 
+.prev:hover,
+.next:hover {
+    background: #1E5BFF;
+}
+ 
+/* Config de Beneficios */
+.seccion-beneficios {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    padding: 4.5rem 10%;
+    background-color: #FFFFFF;
+}
+ 
+.beneficio-item {
+    flex: 1;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #333;
+    border-right: 0.1rem solid #d8dce8;
+}
+ 
+.beneficio-item:last-child {
+    border-right: none;
+}
+ 
+.beneficio-item i {
+    font-size: 4rem;
+    color: #1E5BFF;
+    margin-bottom: 1rem;
+}
+ 
+.beneficio-item p {
+    font-size: 1.5rem;
+}
+/* #endregion CSS del Main */
+ 
+/* #region MediaQuerys */
+@media screen and (max-width: 1280px) {
+    .seccion-hero {
+        height: auto;
+        padding: 5rem 5%;
+    }
+ 
+    .hero-contenido h1 {
+        font-size: 3.2rem;
+    }
+ 
+    .formulario-vuelos {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        align-items: center;
+        padding-bottom: 3.5rem;
+    }
+ 
+    .campo:last-of-type,
+    .boton-buscar {
+        grid-column: span 2;
+        width: 100%;
+    }
+ 
+    .tarjeta-vuelo {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: flex-start;
+    }
+ 
+    .vuelo-precio {
+        align-items: flex-start;
+        width: 100%;
+    }
+ 
+    .seccion-beneficios {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+ 
+    .beneficio-item {
+        border-right: none;
+        border-bottom: 0.1rem solid #d8dce8;
+        padding: 2rem;
+    }
+ 
+    .beneficio-item:nth-child(3),
+    .beneficio-item:nth-child(4) {
+        border-bottom: none;
+    }
+}
+/* #endregion MediaQuerys */
